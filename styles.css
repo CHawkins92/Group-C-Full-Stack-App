@@ -1,0 +1,24 @@
+.form_container{
+    margin-top: 100px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 50px;
+    background-color: rgb(213, 235, 254);
+    border-radius: 20px;
+    
+}
+
+h1{
+    text-align: center;
+    padding: 50px,50px,50px,20px;
+}
+
+h2{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+
+
+
