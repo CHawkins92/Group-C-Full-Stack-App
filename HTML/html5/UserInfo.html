@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>User Info</title>
+    <style>
+    
+        body {
+            font-family: Arial, Verdana;
+        }
+        
+        button {
+            width: 120px;
+            height: 30px;
+            background-color: green;
+            color: lightblue;
+            margin: 10px 5px 10px 5px;
+        }
+        
+        label {
+            float: left;
+            width: 100px;
+        }
+
+        section {
+            background-color:lightblue;
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        summary{
+            color: green;
+        }
+
+        #required{
+            background-color:yellow;
+        }
+        
+    </style>
+</head>
+
+<body>
+   
+    <section>
+        <details>
+
+        <summary>User info</summary>
+
+
+        <label>Firstname</label>
+        <input type="text" id="fname" /><br/>
+        
+        <label>Lastname</label>
+        <input type="text" id="lname" required="required" /><br/>
+        
+        <label>Title</label>
+        <input type="text" id="title" /><br/>
+    </details>
+    </section>   
+    
+    <section>
+      <details>
+        <summary>Address info</summary>
+        <label>Address 1</label>
+        <input type="text" id="address1" required="required" /><br/>
+        
+        <label>Address 2</label>
+        <input type="text" id="address2" /><br/>
+        
+        <label>Address 3</label>
+        <input type="text" id="address3" required="required" /><br/>
+          </details>
+    </section>
+    
+    <section>
+             <details> 
+        <summary>Telephone info</summary>
+        <div id="phoneNumbers">
+            <label>Mobile</label>
+            <input type="text" id="mobile" required="required" /><br/>
+            
+            <label>Home</label>
+            <input type="text" id="home" /><br/>
+            
+            <label>Office</label>
+            <input type="text" name="office" /><br/>
+            
+            <button type="button" id="addPhoneNumbersButton">Add</button>
+        </div>
+
+        <footer>
+            Phone numbers:
+            <ul id="phoneList" />
+        </footer>
+      </details>
+    </section>
+    
+    <button type="button" id="displayAllRequiredFieldsButton">Display Required</button>
+    <button type="button" id="clearAllFieldsButton">Clear All</button>
+     
+    <script type="text/javascript">
+     
+        document.querySelector("#displayAllRequiredFieldsButton").onclick = function() {
+            var requiredFields = document.querySelectorAll("input[required]");
+
+
+            var result="";
+            for (var i = 0; i < requiredFields.length; i++) {
+                requiredFields[i].style["background-color"] = "yellow";
+                result += "Field: " + requiredFields[i].name + ", value: " + requiredFields[i].value + "\n";
+            }
+
+            alert(result);
+
+        }
+    
+        document.querySelector("#clearAllFieldsButton").onclick = function() {
+            var allFields = document.querySelectorAll("input");
+
+
+            for (var i = 0; i < allFields.length; i++) {
+                allFields[i].value = "";
+            }
+        }
+        
+        document.querySelector("#addPhoneNumbersButton").onclick = function() {
+            // Todo: Implement function to add phone numbers to the list.
+            var phoneNumbers = document.querySelectorAll("phoneNumbers[input]");
+            console.log(phoneNumbers);
+
+
+            var phoneList = document.getElementById("phoneList");
+
+            var newPhone = document.createElement("");
+            newPhone.appendChild(document.createTextNode("Four"));
+            phoneList.appendChild(newPhone);
+		}
+    </script>
+
+</body>
+</html>
