@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Submit button</title>
+</head>
+<body>
+<section>
+<button type="button" id="SubmitRequest">Submit Request</button>
+</section>
+<div id="myData"></div>
+<script type="text/javascript">
+     
+        // Function to send request to api.
+        document.querySelector("#SubmitRequest").onclick = function() {
+			let url = "https://6141baf9357db50017b3dc83.mockapi.io/api/1/hobbits";
+			//fetch(url)
+			//.then(response => response.json())
+			//.then(data => console.log(data))
+			fetch('https://6141baf9357db50017b3dc83.mockapi.io/api/1/hobbits')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData");
+            for (var i = 0; i < data.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = 'ID: ' + data[i].id + ' Name: ' + data[i].name + ' ' + data[i].lastName;
+                mainContainer.appendChild(div);
+            }
+        }
+        }
+		
+    </script>
+</body>
+</html>
+
