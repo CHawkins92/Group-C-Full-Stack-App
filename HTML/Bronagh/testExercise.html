@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Test Exercise on JS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+        
+
+    </head>
+
+    <body>
+
+    <button type="button" id="button1"> Button 1</button>
+
+        <script type="text/javascript">
+         document.querySelector("#button1").onclick = function() {
+            let url = "https://6141baf9357db50017b3dc83.mockapi.io/api/1/hobbits";
+            fetch(url);  
+        }
+
+        {% comment %} $("#myForm")
+        .ajaxForm({
+        url : "https://6141baf9357db50017b3dc83.mockapi.io/api/1/hobbits",
+        dataType : 'json',
+        success : function (response) {
+            alert("The server says: " + response);
+        }
+        });
+        </script>
+
+        <form id="myForm" action="" method="post">
+            <input type="submit" value="Submit Comment" />
+        </form>
+
+        <script>
+            // wait for the DOM to be loaded
+            $(document).ready(function() {
+                // bind 'myForm' and provide a simple callback function
+                $('#myForm').ajaxForm(function() {
+                alert("Thank you for your comment!");
+            });
+        });
+        </script> {% endcomment %}
+
+        <div id="myData"></div>
+        <script>
+            function pressButton() {
+                fetch('people.json')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    appendData(data);
+                })
+                .catch(function (err) {
+                    console.log('error: ' + err);
+                });
+            }
+            function appendData(data) {
+                var mainContainer = document.getElementById("myData");
+                for (var i = 0; i < data.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+                    mainContainer.appendChild(div);
+                }
+            }  
+        </script>
+
+    </body>
+</html>
